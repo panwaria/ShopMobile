@@ -29,8 +29,6 @@ public class MainActivity extends Activity
 														android.R.layout.simple_spinner_item);
 		categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		categorySpinner.setAdapter(categoryAdapter);
-		
-		
 	}
 
 	@Override
