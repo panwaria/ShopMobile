@@ -2,3 +2,7 @@ README
 ======
 
 Let's keep all the web-related files in this directory.
+
+Here we are working on a PHP RESTful endpoint to be used by
+our mobile application. Right now we dont have much of anything
+but hopefully this will change. -Sam
