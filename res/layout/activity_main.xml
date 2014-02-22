@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/background" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
 	        android:layout_marginBottom="@dimen/gen_item_margin_vertical" />
         
 	    <Spinner 
-	        android:id="@+id/category" 
+	        android:id="@+id/spinner_category" 
 	        android:layout_width="match_parent"
 	    	android:layout_height="wrap_content" />
     </LinearLayout>
