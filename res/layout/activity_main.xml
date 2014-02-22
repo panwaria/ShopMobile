@@ -1,0 +1,71 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/app_text_size"
+	        android:text="@string/select_category_str"
+	        android:layout_marginBottom="@dimen/gen_item_margin_vertical" />
+        
+	    <Spinner 
+	        android:id="@+id/category" 
+	        android:layout_width="match_parent"
+	    	android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/app_text_size"
+	        android:text="@string/search_keyword_str"
+	        android:layout_marginBottom="@dimen/gen_item_margin_vertical" />
+	    
+	    <EditText
+	        android:id="@+id/keyword"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:hint="@string/edittext_keyword_hint_str" />
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+	    <Button 
+	        android:id="@+id/btn_search"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/btn_search_str"
+	        android:background="@drawable/btn_orange_matte"
+	        android:textSize="@dimen/btn_text_size"
+	        android:textStyle="bold" />
+	</LinearLayout>
+	
+</LinearLayout>
