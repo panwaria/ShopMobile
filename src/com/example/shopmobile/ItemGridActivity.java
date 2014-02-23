@@ -47,6 +47,12 @@ public class ItemGridActivity extends Activity {
 	    }
 	}
 	
+	/**
+	 * TODO : Loads image for an url in the grid.
+	 * 
+	 * Returns the bitmap representation of image to be set in the image view.
+	 * @param url
+	 */
 	private void loadImageForURL(String url) {
 		try {
 			ImageView imgView = (ImageView) findViewById(R.id.image);

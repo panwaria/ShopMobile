@@ -38,6 +38,7 @@ public class CatalogSearchService {
 		// TODO : Fetch JSON data using an apt url
 		List<Item> items = Lists.newArrayList();
 		
+		// TODO : Hardcoded data as of now. Fix this !!
 		Map<String, String> item1AttrMap = Maps.newHashMap();
 		item1AttrMap.put(Constants.ITEM_IMG_URL, "http://highered.mcgraw-hill.com/sites/dl/free/0070131511/cover/cormen-lg_cover.jpg");
 		items.add(new Item(1, item1AttrMap));
@@ -50,6 +51,12 @@ public class CatalogSearchService {
 	}
 	
 	// TODO
+	/**
+	 * Returns the fetch url based on the category and keyword parameters.
+	 * @param category
+	 * @param keyword
+	 * @return
+	 */
 	private static String getCatalogSearchURL(String category, String keyword)
 	{
 		return null;
