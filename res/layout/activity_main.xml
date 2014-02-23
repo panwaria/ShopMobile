@@ -66,7 +66,8 @@
 	        android:text="@string/btn_search_str"
 	        android:background="@drawable/btn_orange_matte"
 	        android:textSize="@dimen/btn_text_size"
-	        android:textStyle="bold" />
+	        android:textStyle="bold" 
+            android:onClick="onButtonClick"	/>    
 	</LinearLayout>
 	
 </LinearLayout>

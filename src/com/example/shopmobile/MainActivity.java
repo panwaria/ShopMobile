@@ -1,8 +1,11 @@
 package com.example.shopmobile;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -39,4 +42,25 @@ public class MainActivity extends Activity
 		return true;
 	}
 
+	/**
+	 * Callback method for clicks on the buttons in Main Screen.
+	 * @param v		View clicked
+	 */
+	public void onButtonClick(View v)
+	{
+		Log.i("Main Activity", "Inside button event handler ..");
+		switch(v.getId())
+		{
+ 
+		case R.id.btn_search:
+ 
+			Intent showItemGrid = new Intent(MainActivity.this, ItemGridActivity.class);
+			startActivity(showItemGrid);
+			Log.i("Main Activity", "Inside button search ..");
+ 
+			break;
+ 
+		default:
+		}
+	}
 }
