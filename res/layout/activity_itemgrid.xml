@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+ 
+    <!-- ItemGrid Screen Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Catalog Items"
+        android:textSize="20sp" />
+ 
+    <!-- Although not required in this case, but I just wanted to demonstrate its use -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true" >
+ 
+        <!-- Grid View showing item image thumbnails -->
+        <GridView
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dip"
+            android:numColumns="2"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="20dp"
+            android:horizontalSpacing="20dp"
+            android:gravity="center" />
+
+    </ScrollView>
+ 
+</LinearLayout>
