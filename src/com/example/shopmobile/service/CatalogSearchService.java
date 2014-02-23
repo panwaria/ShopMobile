@@ -10,10 +10,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import com.example.shopmobile.Constants;
 import com.example.shopmobile.model.Item;
 import com.google.common.collect.Lists;

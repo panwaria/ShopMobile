@@ -1,10 +1,6 @@
 package com.example.shopmobile.model;
 
-import java.util.List;
 import java.util.Map;
-
-import com.example.shopmobile.Constants;
-import com.google.common.collect.Lists;
 
 /**
  * Represents a single item in catalog.

@@ -16,5 +16,24 @@
         <item>Electronics</item>
         <item>Software</item>
     </string-array>
+    
+      <!-- Activity titles -->
+    <string name="ac_name_image_list">Image List Example</string>
+    <string name="ac_name_image_grid">Image Grid Example</string>
+    <string name="ac_name_image_pager">Image Pager Example</string>
+    <string name="ac_name_image_gallery">Image Gallery Example</string>
+    <!-- Labels -->
+    <string name="label_activity_examples">Activity Examples</string>
+    <string name="menu_item_clear_memory_cache">Clear memory cache</string>
+    <string name="menu_item_clear_disc_cache">Clear disc cache</string>
+    <string name="menu_item_pause_on_scroll">Pause on scroll</string>
+    <string name="menu_item_pause_on_fling">Pause on fling</string>
+    <string name="button_image_list">ListView</string>
+    <string name="button_image_grid">GridView</string>
+    <string name="button_image_pager">ViewPager</string>
+    <string name="button_image_gallery">Gallery</string>
+    <!-- Content descriptions -->
+    <string name="descr_image">Image</string>
+    
 
 </resources>

@@ -1,21 +1,11 @@
 package com.example.shopmobile;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
-
-import com.example.shopmobile.model.Item;
-import com.example.shopmobile.service.CatalogSearchService;
-
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.GridView;
-import android.widget.ImageView;
+import com.example.shopmobile.model.Item;
+import com.example.shopmobile.service.CatalogSearchService;
 
 /**
  * Renders the appropriate items in a grid format.

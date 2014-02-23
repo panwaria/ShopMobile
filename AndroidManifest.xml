@@ -24,10 +24,12 @@
         </activity>
         
 	   <!-- ItemGrid Activity -->
-        <activity
-	        android:name="com.example.shopmobile.ItemGridActivity"
-	        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+       <activity
+	        android:name="com.example.shopmobile.ItemGridActivity" />
                 
+       <activity
+	        android:name="com.example.shopmobile.ItemListActivity" />
+       
     </application>
 
     <!-- Internet Permissions -->
