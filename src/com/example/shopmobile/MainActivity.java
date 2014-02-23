@@ -7,11 +7,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class MainActivity extends Activity
 {
-
+	private Spinner categorySpinner = null;
+	private EditText keywordText = null;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -27,11 +30,13 @@ public class MainActivity extends Activity
 	private void setUIControls()
 	{
 		// Setting up Drop-down
-		Spinner categorySpinner = (Spinner) findViewById(R.id.spinner_category);
+		categorySpinner = (Spinner) findViewById(R.id.spinner_category);
 		ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.category_array, 
 														android.R.layout.simple_spinner_item);
 		categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		categorySpinner.setAdapter(categoryAdapter);
+		
+		keywordText = (EditText) findViewById(R.id.keyword);
 	}
 
 	@Override
@@ -53,10 +58,14 @@ public class MainActivity extends Activity
 		{
  
 		case R.id.btn_search:
- 
+			String searchCategory = categorySpinner.getSelectedItem().toString();
+			String searchKeyword = keywordText.getText().toString();
+			
 			Intent showItemGrid = new Intent(MainActivity.this, ItemGridActivity.class);
+			showItemGrid.putExtra(Constants.ITEM_CATEGORY, searchCategory);
+			showItemGrid.putExtra(Constants.SEARCH_KEYWORD, searchKeyword);
 			startActivity(showItemGrid);
-			Log.i("Main Activity", "Inside button search ..");
+			Log.i("Main Activity", "Search with category : " + searchCategory + ", keyword : " + searchKeyword);
  
 			break;
  
