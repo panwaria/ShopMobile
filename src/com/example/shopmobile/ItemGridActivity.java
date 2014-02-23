@@ -43,7 +43,7 @@ public class ItemGridActivity extends Activity {
 	    for(Item item : catalogItems)
 	    {
 	    	String url = item.getAttrValuesMap().get(Constants.ITEM_IMG_URL);
-	    	loadImageForURL(url);
+//	    	loadImageForURL(url);
 	    }
 	}
 	
@@ -53,15 +53,15 @@ public class ItemGridActivity extends Activity {
 	 * Returns the bitmap representation of image to be set in the image view.
 	 * @param url
 	 */
-	private void loadImageForURL(String url) {
-		try {
-			ImageView imgView = (ImageView) findViewById(R.id.image);
-			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
-			imgView.setImageBitmap(bitmap);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void loadImageForURL(String url) {
+//		try {
+//			ImageView imgView = (ImageView) findViewById(R.id.image);
+//			Bitmap bitmap = BitmapFactory.decodeStream((InputStream) new URL(url).getContent());
+//			imgView.setImageBitmap(bitmap);
+//		} catch (MalformedURLException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
