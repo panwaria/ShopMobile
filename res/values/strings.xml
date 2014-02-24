@@ -11,7 +11,6 @@
     <string name="edittext_keyword_hint_str">Enter search keyword</string>
     
     <string-array name="category_array">
-        <item>Business</item>
         <item>Astronomy</item>
         <item>Psychology</item>
         <item>Computer-Science</item>

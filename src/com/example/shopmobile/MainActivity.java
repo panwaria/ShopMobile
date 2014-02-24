@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -114,10 +116,29 @@ public class MainActivity extends BaseActivity
 			String searchKeyword = keywordText.getText().toString();
 			
 			Object[] itemArray = getDummyItemArray(searchCategory, searchKeyword);
-			Intent intent = new Intent(this, ItemListActivity.class);
-			intent.putExtra(Constants.Extra.ITEMS, itemArray);
 			
-			startActivity(intent);
+			if(itemArray.length > 0)
+			{	
+				Intent intent = new Intent(this, ItemListActivity.class);
+				intent.putExtra(Constants.Extra.ITEMS, itemArray);
+				
+				startActivity(intent);
+			}
+			else
+			{
+				AlertDialog.Builder builder = new AlertDialog.Builder(this /* Activity Context */);
+				builder.setMessage("Sorry no items found for this combination of Category and Keyword!")
+						.setCancelable(true)
+						.setNegativeButton("Cool!", new DialogInterface.OnClickListener() 
+						{
+						   public void onClick(DialogInterface dialog, int id) 
+						   {
+								dialog.cancel();
+						   }
+				       })
+		 				.create()
+	 					.show();	
+			}
 
 			break;
 

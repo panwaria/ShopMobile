@@ -95,8 +95,8 @@ public class PaymentFormActivity extends Activity
 				{
 					AlertDialog.Builder builder = new AlertDialog.Builder(PaymentFormActivity.this);
 					builder.setMessage("Transaction Successful! Your item \"" + name + "\" will be shipped to \""
-		       				+ address + "\"")
-				       		.setTitle("Congratulations! And, thanks for your purchase!")
+		       				+ address + "\" within 2 days.")
+				       		.setTitle("Congratulations!")
 							.setNegativeButton("Ok", new DialogInterface.OnClickListener() 
 							{
 							   public void onClick(DialogInterface dialog, int id) 
