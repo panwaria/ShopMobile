@@ -1,5 +1,7 @@
 package com.example.shopmobile;
 
+import java.util.HashMap;
+import java.util.Map;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.example.shopmobile.model.Item;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -39,10 +42,8 @@ public class MainActivity extends BaseActivity
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
 				.threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
 				.discCacheFileNameGenerator(new Md5FileNameGenerator())
-				.tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs() // Remove
-																					// for
-																					// release
-																					// app
+				.tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs() // Remove for release app
+																					
 				.build();
 		// Initialize ImageLoader with configuration.
 		ImageLoader.getInstance().init(config);
@@ -86,9 +87,9 @@ public class MainActivity extends BaseActivity
 		case R.id.btn_search:
 
 			/**
-			 * // For ItemGridActivity String searchCategory =
-			 * categorySpinner.getSelectedItem().toString(); String
-			 * searchKeyword = keywordText.getText().toString();
+			 * // For ItemGridActivity 
+			 * String searchCategory = categorySpinner.getSelectedItem().toString(); 
+			 * String searchKeyword = keywordText.getText().toString();
 			 * 
 			 * Intent showItemGrid = new Intent(MainActivity.this,
 			 * ItemGridActivity.class);
@@ -99,14 +100,41 @@ public class MainActivity extends BaseActivity
 			 * searchKeyword);
 			 **/
 
+			String searchCategory = categorySpinner.getSelectedItem().toString();
+			String searchKeyword = keywordText.getText().toString();
+			
+			Item[] itemArray = getDummyItemArray(searchCategory, searchKeyword);
 			Intent intent = new Intent(this, ItemListActivity.class);
-			intent.putExtra(Constants.Extra.IMAGES, Constants.IMAGES);
+			intent.putExtra(Constants.Extra.ITEMS, itemArray);
+			
 			startActivity(intent);
 
 			break;
 
 		default:
 		}
+	}
+	
+	public Item[] getDummyItemArray(String searchCategory, String searchKeyword)
+	{
+		Item[] itemArray = new Item[35];
+		
+		Integer count = 0 ;
+		for (String imageUrl : Constants.IMAGES)
+		{
+			Integer id = count + 100;
+			Map<String, String> attrValuesMap = new HashMap<String, String>();
+			
+			attrValuesMap.put(Constants.ITEM_ID, id.toString());
+			attrValuesMap.put(Constants.ITEM_URL, imageUrl);
+			attrValuesMap.put(Constants.ITEM_TITLE, Constants.TITLES[count]);
+
+			itemArray[count] = new Item(count+100, attrValuesMap);
+			
+			count++;
+		}
+		
+		return itemArray;
 	}
 
 	@Override

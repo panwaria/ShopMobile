@@ -5,8 +5,8 @@ public final class Constants
 {
 	// List of attribute names possible in the item
 	public static final String ITEM_ID	= "id";
-	public static final String ITEM_NAME = "name";
-	public static final String ITEM_IMG_URL = "imageURL";
+	public static final String ITEM_TITLE = "name";
+	public static final String ITEM_URL = "imageURL";
 	public static final String ITEM_CATEGORY = "category";
 	public static final String ITEM_PRICE = "price";
 	
@@ -36,6 +36,7 @@ public final class Constants
 	public static class Extra
 	{
 		public static final String IMAGES = "com.example.shopmobile.IMAGES";
+		public static final String ITEMS = "com.example.shopmobile.ITEMS";
 		public static final String IMAGE_POSITION = "ccom.example.shopmobile.IMAGE_POSITION";
 	}
 	
@@ -78,6 +79,46 @@ public final class Constants
 		"http://img001.us.expono.com/100001/100001-1bc30-2d736f_m.jpg", // EXIF
 		"", // Empty link
 		"http://wrong.site.com/corruptedLink", // Wrong link
+	};
+	
+	public static final String[] TITLES = new String[]
+	{
+		"Accounting — Coniiniied Day, C. M. Accounting practice.",
+		"Dickinson, A. L. Accounting practice and procedure." ,
+		"Dicksee, L. R. Advanced accounting. 4th ed.", 
+		"Dicksee, L. R. Goodwill and its treatment in accounts. 3d ed.", 
+		"Eddis, W. C. Manufacturers' accounts", 
+		"Esquerre, P. J. Applied theory of accounts.",
+		"Fraud in accounts",
+		"Garrison, E. E. Accounting every business man should know.",
+		"Greendlinger, L. Accounting theory and practice", 
+		"Grififith, J. B. Theory of accounts.",
+		"Griffith, J. B. Voucher system of accounting.",
+		"Haskins, C. W. Business education and accountancy.",
+		"Hatfield, H. R. Modem accounting, its principles and problems.",
+		"Heitmann, H. Course in the theory and practice of higher accounting.",
+		"Hurtt, J. M. Dividend law and some of its applications.",
+		"Interstate commerce commission. Bureau of statistics and accounts. Pamphlets.", 
+		"Klein, J. J. Elements of accounting.", 
+		"Leake, P. D. Depreciation and wasting assets and their treatment in assessing annual profit and loss.",
+		"Lisle, G. Accounting in theory and practice.",
+		"MacFarland, G. A. First year in bookkeeping and accounting.",
+		"Moore, J. H. Accounting and business practice.",
+		"Moxey, E. P. Accounting systems appropriate to different kinds of business.",
+		"Same as Practical accounting methods",
+		"Pixley, F. W. Accountancy.",
+		"Practical accounting methods appropriate to various kinds of business.",
+		"Same as Moxey, E. P. Accounting systems.",
+		"Interstate commerce commission. Bureau of statistics and accounts. Pamphlets.", 
+		"Klein, J. J. Elements of accounting.", 
+		"Leake, P. D. Depreciation and wasting assets and their treatment in assessing annual profit and loss.",
+		"Lisle, G. Accounting in theory and practice.",
+		"MacFarland, G. A. First year in bookkeeping and accounting.",
+		"Moore, J. H. Accounting and business practice.",
+		"Moxey, E. P. Accounting systems appropriate to different kinds of business.",
+		"Same as Practical accounting methods",
+		"Pixley, F. W. Accountancy.",
+		"Practical accounting methods appropriate to various kinds of business."
 	};
 
 }

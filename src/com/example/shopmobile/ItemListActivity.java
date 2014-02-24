@@ -3,8 +3,10 @@ package com.example.shopmobile;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.shopmobile.Constants.Extra;
+import com.example.shopmobile.model.Item;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.assist.SimpleImageLoadingListener;
@@ -25,7 +27,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 {
 	DisplayImageOptions options;
 
-	String[] imageUrls;
+//	String[] imageUrls;
+	Item[] items;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState)
@@ -33,8 +36,16 @@ public class ItemListActivity extends AbsListViewBaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_itemlist);
 
-		Bundle bundle = getIntent().getExtras();
-		imageUrls = bundle.getStringArray(Extra.IMAGES);
+		Intent i = getIntent();
+		Object[] objArray = (Object[]) i.getSerializableExtra(Constants.Extra.ITEMS);
+		items = new Item[objArray.length];
+
+		int count = 0;
+		for (Object obj : objArray)
+			items[count++] = (Item) obj;
+		
+//		Bundle bundle = getIntent().getExtras();
+//		imageUrls = bundle.getStringArray(Extra.IMAGES);
 
 		options = new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.ic_stub)
 				.showImageForEmptyUri(R.drawable.ic_empty).showImageOnFail(R.drawable.ic_error)
@@ -83,7 +94,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 		@Override
 		public int getCount()
 		{
-			return imageUrls.length;
+			return items.length;
+//			return imageUrls.length;
 		}
 
 		@Override
@@ -95,7 +107,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 		@Override
 		public long getItemId(int position)
 		{
-			return position;
+			return items[position].getId();
+//			return position;
 		}
 
 		@Override
@@ -116,9 +129,14 @@ public class ItemListActivity extends AbsListViewBaseActivity
 				holder = (ViewHolder) view.getTag();
 			}
 
-			holder.text.setText("Item " + (position + 1));
+			if(items[position] == null)
+				return view;
+			
+			Log.i("Prakhar", "ID: " + items[position].getId() + " URL: " + items[position].getAttrValuesMap().get(Constants.ITEM_URL));
+			holder.text.setText("ID: " + items[position].getId());//(position + 1));
 
-			imageLoader.displayImage(imageUrls[position], holder.image, options,
+			imageLoader.displayImage(items[position].getAttrValuesMap().get(Constants.ITEM_URL) /*imageUrls[position]*/, 
+					holder.image, options,
 					animateFirstListener);
 
 			return view;

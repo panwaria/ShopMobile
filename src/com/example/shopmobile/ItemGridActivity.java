@@ -34,7 +34,7 @@ public class ItemGridActivity extends Activity {
 	    
 	    for(Item item : catalogItems)
 	    {
-	    	String url = item.getAttrValuesMap().get(Constants.ITEM_IMG_URL);
+	    	String url = item.getAttrValuesMap().get(Constants.ITEM_URL);
 //	    	loadImageForURL(url);
 	    }
 	}

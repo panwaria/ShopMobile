@@ -38,11 +38,11 @@ public class CatalogSearchService {
 		
 		// TODO : Hardcoded data as of now. Fix this !!
 		Map<String, String> item1AttrMap = Maps.newHashMap();
-		item1AttrMap.put(Constants.ITEM_IMG_URL, "http://highered.mcgraw-hill.com/sites/dl/free/0070131511/cover/cormen-lg_cover.jpg");
+		item1AttrMap.put(Constants.ITEM_URL, "http://highered.mcgraw-hill.com/sites/dl/free/0070131511/cover/cormen-lg_cover.jpg");
 		items.add(new Item(1, item1AttrMap));
 		
 		Map<String, String> item2AttrMap = Maps.newHashMap();
-		item2AttrMap.put(Constants.ITEM_IMG_URL, "http://pages.cs.wisc.edu/~dbbook/images/book3ed.jpg");
+		item2AttrMap.put(Constants.ITEM_URL, "http://pages.cs.wisc.edu/~dbbook/images/book3ed.jpg");
 		items.add(new Item(2, item2AttrMap));
 		
 		return items;
