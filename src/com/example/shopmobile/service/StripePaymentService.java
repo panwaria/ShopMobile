@@ -25,7 +25,7 @@ public class StripePaymentService
 	 * 
 	 * @return
 	 */
-	public static final boolean debit(double amount, String currency, long cardNumber,
+	public static final boolean debit(int amount, String currency, long cardNumber,
 			int expMonth, int expYear, String cvc)
 	{
 		Stripe.apiKey = Constants.STRIPE_KEY;
@@ -37,7 +37,7 @@ public class StripePaymentService
 		cardParams.put(Constants.CARD_CVC, cvc);
 
 		Map<String, Object> chargeParams = Maps.newHashMap();
-		chargeParams.put(Constants.CHARGE_AMOUNT, amount);
+		chargeParams.put(Constants.CHARGE_AMOUNT, amount*100);
 		chargeParams.put(Constants.CHARGE_CURRENCY, currency);
 		chargeParams.put(Constants.CHARGE_CARD, cardParams);
 
@@ -51,22 +51,27 @@ public class StripePaymentService
 		{
 			isDebitSuccess = false;
 			err = e;
+			Log.e("", "Auth exception");
 		} catch (InvalidRequestException e)
 		{
 			isDebitSuccess = false;
 			err = e;
+			Log.e("", "Invalid Request exception");			
 		} catch (APIConnectionException e)
 		{
 			isDebitSuccess = false;
 			err = e;
+			Log.e("", "APIConnection exception");			
 		} catch (CardException e)
 		{
 			isDebitSuccess = false;
 			err = e;
+			Log.e("", "Card exception");			
 		} catch (APIException e)
 		{
 			isDebitSuccess = false;
 			err = e;
+			Log.e("", "API exception");			
 		}
 
 		if (isDebitSuccess)
@@ -76,7 +81,8 @@ public class StripePaymentService
 		} else
 		{
 			Log.e("StripePaymentService", "Failed to debit credit card for " + amount + " "
-					+ currency + ". Reason : " + err.getStackTrace());
+					+ currency);
+			err.printStackTrace();
 		}
 
 		return isDebitSuccess;

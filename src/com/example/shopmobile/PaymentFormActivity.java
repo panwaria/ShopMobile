@@ -2,9 +2,11 @@ package com.example.shopmobile;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.shopmobile.model.Item;
 import com.example.shopmobile.service.StripePaymentService;
@@ -31,6 +33,10 @@ public class PaymentFormActivity extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_paymentform);
 		
+		// Hack : To fix the NetworkOnMainThreadException error.
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);
+	    
 		// Retrieve the search parameters passed
 		Bundle extras = getIntent().getExtras();
 //		itemToCheckout = (Item)extras.get(Constants.ITEM_TO_CHECKOUT);
@@ -76,6 +82,8 @@ public class PaymentFormActivity extends Activity
 				if(isDebitSuccess) {
 					Log.i("PaymentFormActivity", "Item " + name + " shipped to " + address);
 				}
+				
+				Toast.makeText(getApplicationContext(), "Debit Status : " + isDebitSuccess, Toast.LENGTH_LONG).show();
 			break;
 		}		
 	}
