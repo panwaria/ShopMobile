@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.example.shopmobile.model.Item;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
@@ -46,10 +48,12 @@ public class ItemListActivity extends AbsListViewBaseActivity
 //		Bundle bundle = getIntent().getExtras();
 //		imageUrls = bundle.getStringArray(Extra.IMAGES);
 
-		options = new DisplayImageOptions.Builder().showImageOnLoading(R.drawable.ic_stub)
-				.showImageForEmptyUri(R.drawable.ic_empty).showImageOnFail(R.drawable.ic_error)
-				.cacheInMemory(true).cacheOnDisc(true).considerExifParams(true)
-				.displayer(new RoundedBitmapDisplayer(20)).build();
+		options = new DisplayImageOptions.Builder()
+					.showImageOnLoading(R.drawable.ic_stub)
+					.showImageForEmptyUri(R.drawable.ic_empty)
+					.showImageOnFail(R.drawable.ic_error)
+					.cacheInMemory(true).cacheOnDisc(true).considerExifParams(true)
+					.displayer(new RoundedBitmapDisplayer(20)).build();
 
 		listView = (ListView) findViewById(android.R.id.list);
 		((ListView) listView).setAdapter(new ItemAdapter());
@@ -59,10 +63,13 @@ public class ItemListActivity extends AbsListViewBaseActivity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				launchPaymentFormActivity(position);
-//				Toast.makeText(ItemListActivity.this, "Need to send an intent to Stripe Activity", Toast.LENGTH_SHORT).show();
-				// Send intent to Stripe Activity giving details of the item clicked.
 			}
 		});
+		
+		// Show informational toast.
+		Toast t = Toast.makeText(this, "Click on any item to buy.", Toast.LENGTH_LONG);
+		t.setGravity(Gravity.CENTER, 0, 0);
+		t.show();
 	}
 
 	@Override
