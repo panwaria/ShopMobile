@@ -10,10 +10,16 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
+
 import com.example.shopmobile.Constants;
 import com.example.shopmobile.model.Item;
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -38,20 +44,33 @@ public class CatalogSearchService
 	 */
 	public static List<Item> searchItemsInCatalog(String category, String keyword)
 	{
-		// TODO : Fetch JSON data using an apt url
 		List<Item> items = Lists.newArrayList();
+		String url = getCatalogSearchURL(category, keyword);
+		JSONArray itemsObjects = null;
+		try {
+			itemsObjects = getJSONFromURL(url);
+			for(int i=0; i < itemsObjects.length(); i++) {
+				JSONObject obj = itemsObjects.getJSONObject(i);
+				
+				Map<String, String> attrValuesMap = Maps.newHashMap();
+				attrValuesMap.put(Constants.ITEM_TITLE, obj.getString("title"));
+				attrValuesMap.put(Constants.ITEM_URL, obj.getString("image_url"));
+				attrValuesMap.put(Constants.ITEM_PRICE, obj.getString("price"));
+				
+				items.add(new Item(i, attrValuesMap));
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		// TODO : Hardcoded data as of now. Fix this !!
-		Map<String, String> item1AttrMap = Maps.newHashMap();
-		item1AttrMap
-				.put(Constants.ITEM_URL,
-						"http://highered.mcgraw-hill.com/sites/dl/free/0070131511/cover/cormen-lg_cover.jpg");
-		items.add(new Item(1, item1AttrMap));
-
-		Map<String, String> item2AttrMap = Maps.newHashMap();
-		item2AttrMap.put(Constants.ITEM_URL, "http://pages.cs.wisc.edu/~dbbook/images/book3ed.jpg");
-		items.add(new Item(2, item2AttrMap));
-
+		Log.i("TEST", "found " + items.size() + " items ..");
 		return items;
 	}
 
@@ -65,45 +84,42 @@ public class CatalogSearchService
 	 */
 	private static String getCatalogSearchURL(String category, String keyword)
 	{
-		return null;
+		String url = Constants.CATALOG_BASE_URL;
+		url = url + "&category=";
+		if(!Strings.isNullOrEmpty(category)) {
+			url = url + category;
+		}
+		
+		url = url + "&search=";
+		if(!Strings.isNullOrEmpty(keyword)) {
+			url = url + keyword;
+		}
+		
+		Log.i("TEST", "URL : " + url);
+		return url;
 	}
 
-	/**
-	 * http://stackoverflow.com/questions/4308554/simplest-way-to-read-json-from
-	 * -a-url-in-java
-	 * 
-	 * @param url
-	 * @return
-	 * @throws IOException
-	 * @throws MalformedURLException
-	 * @throws JSONException
-	 */
-	private static JSONObject getJSONFromURL(String url) throws MalformedURLException, IOException,
-			JSONException
-	{
+	private static JSONArray getJSONFromURL(String url)
+			throws MalformedURLException, IOException, JSONException {
 		InputStream is = new URL(url).openStream();
-		try
-		{
+		try {
 			BufferedReader rd = new BufferedReader(new InputStreamReader(is,
 					Charset.forName("UTF-8")));
 			String jsonText = readAll(rd);
-			JSONObject json = new JSONObject(jsonText);
+			JSONArray json = new JSONArray(jsonText);
 			return json;
-		} 
-		finally
-		{
+		} finally {
 			is.close();
 		}
 	}
 
-	private static String readAll(Reader rd) throws IOException
-	{
+	private static String readAll(Reader rd) throws IOException {
 		StringBuilder sb = new StringBuilder();
 		int cp;
-		while ((cp = rd.read()) != -1)
-		{
+		while ((cp = rd.read()) != -1) {
 			sb.append((char) cp);
 		}
 		return sb.toString();
 	}
+
 }

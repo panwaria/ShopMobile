@@ -65,7 +65,7 @@ public class PaymentFormActivity extends Activity
 		{
 			case R.id.btn_checkout:
 				String name = itemToCheckout.getAttrValue(Constants.ITEM_TITLE).toString();
-				int price = Integer.parseInt(itemToCheckout.getAttrValue(Constants.ITEM_PRICE).toString());
+				int price = (int)Double.parseDouble((itemToCheckout.getAttrValue(Constants.ITEM_PRICE).toString()));
 				
 				long cardNo = Long.parseLong(cardNumber.getText().toString());
 				int cardExpYear = Integer.parseInt(cardExpirationYear.getText().toString());

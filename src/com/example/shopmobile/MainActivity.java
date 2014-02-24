@@ -1,17 +1,22 @@
 package com.example.shopmobile;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import com.example.shopmobile.model.Item;
+import com.example.shopmobile.service.CatalogSearchService;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -28,6 +33,11 @@ public class MainActivity extends BaseActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		// Hack : To fix the NetworkOnMainThreadException error.
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	    StrictMode.setThreadPolicy(policy);
+
+	    
 		setUIControls();
 		initImageLoader(getApplicationContext());
 	}
@@ -103,7 +113,7 @@ public class MainActivity extends BaseActivity
 			String searchCategory = categorySpinner.getSelectedItem().toString();
 			String searchKeyword = keywordText.getText().toString();
 			
-			Item[] itemArray = getDummyItemArray(searchCategory, searchKeyword);
+			Object[] itemArray = getDummyItemArray(searchCategory, searchKeyword);
 			Intent intent = new Intent(this, ItemListActivity.class);
 			intent.putExtra(Constants.Extra.ITEMS, itemArray);
 			
@@ -115,8 +125,11 @@ public class MainActivity extends BaseActivity
 		}
 	}
 	
-	public Item[] getDummyItemArray(String searchCategory, String searchKeyword)
+	public Object[] getDummyItemArray(String searchCategory, String searchKeyword)
 	{
+		List<Item> items = CatalogSearchService.searchItemsInCatalog(searchCategory, searchKeyword);
+		return items.toArray();
+		/*
 		Item[] itemArray = new Item[35];
 		
 		Integer count = 0 ;
@@ -139,6 +152,7 @@ public class MainActivity extends BaseActivity
 		}
 		
 		return itemArray;
+		*/
 	}
 
 	@Override

@@ -150,7 +150,7 @@ public class ItemListActivity extends AbsListViewBaseActivity
 			
 			Log.i("Prakhar", "ID: " + items[position].getId() + " URL: " + items[position].getAttrValue(Constants.ITEM_URL));
 			holder.title.setText(items[position].getAttrValue(Constants.ITEM_TITLE).toString());
-			holder.price.setText("Price: $" + items[position].getAttrValue(Constants.ITEM_PRICE) + ".0");
+			holder.price.setText("Price: $" + items[position].getAttrValue(Constants.ITEM_PRICE));
 
 			imageLoader.displayImage(items[position].getAttrValue(Constants.ITEM_URL).toString() /*imageUrls[position]*/, 
 					holder.image, options, animateFirstListener);

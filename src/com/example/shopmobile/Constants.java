@@ -35,6 +35,8 @@ public final class Constants
 
 	// Checkout parameters
 	public static final String ITEM_TO_CHECKOUT = "item_to_checkout";
+
+	public static final String CATALOG_BASE_URL = "http://pages.cs.wisc.edu/~salinisk/cs638/index.php?method=getItems";
 	
 	public static class Extra
 	{
