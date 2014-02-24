@@ -22,13 +22,13 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/app_text_size"
             android:text="@string/card_number"
-        />
+            android:textStyle="bold" />
         
         <EditText
             android:id="@+id/card_number_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|number" />
+            android:inputType="number" />
 
     </LinearLayout>   
 
@@ -36,7 +36,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_weight="1" >
 
         <TextView
@@ -44,13 +44,18 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/app_text_size"
             android:text="@string/card_expiry_date_year"
-        />
+            android:textStyle="bold" />
         
-        <EditText
-            android:id="@+id/card_expiry_date_year_value"
+        <Spinner 
+            android:id="@+id/card_expiry_date_year_value" 
+            style="@style/ExpYear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:layout_height="wrap_content" />
+<!--         <EditText -->
+<!--             android:id="@+id/card_expiry_date_year_value" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:inputType="text" /> -->
 
     </LinearLayout>   
     
@@ -58,7 +63,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_weight="1" >
 
         <TextView
@@ -66,13 +71,19 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/app_text_size"
             android:text="@string/card_expiry_date_month"
-        />
+            android:textStyle="bold" />
         
-        <EditText
-            android:id="@+id/card_expiry_date_month_value"
+        <Spinner 
+            android:id="@+id/card_expiry_date_month_value" 
+            style="@style/ExpMonth"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:layout_height="wrap_content" />
+        
+<!--         <EditText -->
+<!--             android:id="@+id/card_expiry_date_month_value" -->
+<!--             android:layout_width="match_parent" -->
+<!--             android:layout_height="wrap_content" -->
+<!--             android:inputType="text" /> -->
 
     </LinearLayout>
         
@@ -80,7 +91,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_weight="1" >
 
         <TextView
@@ -88,13 +99,13 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/app_text_size"
             android:text="@string/card_cvc"
-        />
+            android:textStyle="bold" />
         
         <EditText
             android:id="@+id/card_cvc_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="number" />
 
     </LinearLayout>   
     
@@ -102,7 +113,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_weight="1" >
 
         <TextView
@@ -110,7 +121,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/app_text_size"
             android:text="@string/user_address"
-        />
+            android:textStyle="bold" />
         
         <EditText
             android:id="@+id/user_address_value"

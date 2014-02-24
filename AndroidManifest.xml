@@ -40,8 +40,9 @@
             android:name="com.example.shopmobile.PaymentFormActivity"
             android:screenOrientation="portrait" />       
             
-       <activity android:name="com.example.shopmobile.stripe.PaymentActivity"
-                  android:screenOrientation="portrait" />
+       <activity 
+           android:name="com.example.shopmobile.stripe.PaymentActivity"
+           android:screenOrientation="portrait" />
        
     </application>
 

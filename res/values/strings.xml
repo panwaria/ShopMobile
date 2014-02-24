@@ -40,7 +40,7 @@
     <string name="card_expiry_date_year">Expiry Year</string>
     <string name="card_expiry_date_month">Expiry Month</string>    
     <string name="card_cvc">CVC</string>    
-    <string name="user_address">Address</string>
+    <string name="user_address">Shipping Address</string>
     <string name="btn_checkout">Checkout</string>    
     
     <!-- Stripe Strings -->
