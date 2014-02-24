@@ -8,9 +8,10 @@
     <string name="btn_search_str">Search</string>
     <string name="search_keyword_str">Search for an item:</string>
     <string name="select_category_str">Select Category:</string>
-    <string name="edittext_keyword_hint_str">Enter search keyword:</string>
+    <string name="edittext_keyword_hint_str">Enter search keyword</string>
     
     <string-array name="category_array">
+        <item>Business</item>
         <item>Astronomy</item>
         <item>Psychology</item>
         <item>Computer-Science</item>
@@ -39,7 +40,18 @@
     <string name="card_expiry_date_year">Expiry Year</string>
     <string name="card_expiry_date_month">Expiry Month</string>    
     <string name="card_cvc">CVC</string>    
-    <string name="user_address">Address</string>
+    <string name="user_address">Shipping Address</string>
     <string name="btn_checkout">Checkout</string>    
+    
+    <!-- Stripe Strings -->
+    <string name="addPayment">Add Payment Method</string>
+    <string name="paymentMethods">Payment Methods</string>
+    <string name="endingIn">Card ending in </string>
+    <string name="progressMessage">Creating Token</string>
+    <string name="validationErrors">Validation Errors</string>
+    <string name="cardNumber">Card Number</string>
+    <string name="save">Save</string>
+    <string name="cvc">CVC</string>
+    <string name="ok">OK</string>
             
 </resources>
