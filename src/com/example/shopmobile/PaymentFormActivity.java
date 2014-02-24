@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView.FindListener;
 import android.widget.EditText;
 
 import com.example.shopmobile.model.Item;
@@ -21,7 +20,8 @@ public class PaymentFormActivity extends Activity
 	private Item itemToCheckout = null;
 	
 	private EditText cardNumber = null;
-	private EditText cardExpirationDate = null;
+	private EditText cardExpirationYear = null;
+	private EditText cardExpirationMonth = null;	
 	private EditText cardCVC = null;
 	private EditText userMailingAddress = null;
 	
@@ -41,7 +41,8 @@ public class PaymentFormActivity extends Activity
 	private void setUIControls()
 	{
 		cardNumber = (EditText)findViewById(R.id.card_number_value);
-		cardExpirationDate = (EditText)findViewById(R.id.card_expiry_date_value);
+		cardExpirationYear = (EditText)findViewById(R.id.card_expiry_date_year_value);
+		cardExpirationMonth = (EditText)findViewById(R.id.card_expiry_date_month_value);		
 		cardCVC = (EditText)findViewById(R.id.card_cvc_value);
 		userMailingAddress = (EditText)findViewById(R.id.user_address_value);
 	}
@@ -56,20 +57,24 @@ public class PaymentFormActivity extends Activity
 		switch (v.getId())
 		{
 			case R.id.btn_checkout:
-				int id = (Integer)itemToCheckout.getAttrValue(Constants.ITEM_ID);
-				String name = (String)itemToCheckout.getAttrValue(Constants.ITEM_NAME);
+				String name = (String)itemToCheckout.getAttrValue(Constants.ITEM_TITLE);
 				double price = (Double)itemToCheckout.getAttrValue(Constants.ITEM_PRICE);
 				
 				long cardNo = Long.parseLong(cardNumber.getText().toString());
-				int cardExpYear = 2015;
-				int cardExpMonth = 12;
+				int cardExpYear = Integer.parseInt(cardExpirationYear.getText().toString());
+				int cardExpMonth = Integer.parseInt(cardExpirationMonth.getText().toString());
 				String cvc = cardCVC.getText().toString();
+				
+				String address = userMailingAddress.getText().toString();
 				
 				boolean isDebitSuccess = 
 						StripePaymentService.debit(price, Constants.DEFAULT_CURRENCY, cardNo, 
 								cardExpMonth, cardExpYear, cvc
 						);
-				Log.i("PaymentFormActivity", "Debit status : " + isDebitSuccess)
+				Log.i("PaymentFormActivity", "Debit status : " + isDebitSuccess + " for item " + name);
+				if(isDebitSuccess) {
+					Log.i("PaymentFormActivity", "Item " + name + " shipped to " + address);
+				}
 			break;
 		}		
 	}

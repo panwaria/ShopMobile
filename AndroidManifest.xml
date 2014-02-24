@@ -30,6 +30,9 @@
        <activity
 	        android:name="com.example.shopmobile.ItemListActivity" />
        
+       <activity
+            android:name="com.example.shopmobile.PaymentFormActivity" />       
+       
     </application>
 
     <!-- Internet Permissions -->

@@ -2,8 +2,6 @@ package com.example.shopmobile.model;
 
 import java.io.Serializable;
 import java.util.Map;
-import android.os.Parcel;
-import android.os.Parcelable;
 
 /**
  * Represents a single item in catalog.
@@ -13,6 +11,11 @@ import android.os.Parcelable;
  */
 public class Item implements Serializable /*, Parcelable */
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6933477053497483342L;
+
 	private int mID;
 	private Map<String, String> mAttrValuesMap;
 
