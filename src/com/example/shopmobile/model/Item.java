@@ -33,24 +33,12 @@ public class Item implements Serializable /*, Parcelable */
 		return mAttrValuesMap;
 	}
 
-//	@Override
-//	public int describeContents()
-//	{
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//
-//	@Override
-//	public void writeToParcel(Parcel dest, int flags)
-//	{
-//		dest.writeInt(mID);
-//		dest.writeMap(mAttrValuesMap);
-//	}
-//
-//	private void readFromParcel(Parcel in)
-//	{
-//		mID = in.readInt();
-////		mAttrValuesMap = in.readMap(outVal, loader);
-//	}
-
+	public Object getAttrValue(String attrName)
+	{
+		Object value = null;
+		if(mAttrValuesMap.containsKey(attrName)) {
+			value = mAttrValuesMap.get(attrName);
+		}
+		return value;
+	}
 }

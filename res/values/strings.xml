@@ -35,5 +35,11 @@
     <!-- Content descriptions -->
     <string name="descr_image">Image</string>
     
-
+    <!-- PaymentFormActivity strings -->
+    <string name="card_number">Credit Card Number</string>
+    <string name="card_expiry_date">Date Of Expiry</string>
+    <string name="card_cvc">CVC</string>    
+    <string name="user_address">Address</string>
+    <string name="btn_checkout">Checkout</string>    
+            
 </resources>

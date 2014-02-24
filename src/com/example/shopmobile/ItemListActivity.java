@@ -132,12 +132,11 @@ public class ItemListActivity extends AbsListViewBaseActivity
 			if(items[position] == null)
 				return view;
 			
-			Log.i("Prakhar", "ID: " + items[position].getId() + " URL: " + items[position].getAttrValuesMap().get(Constants.ITEM_URL));
+			Log.i("Prakhar", "ID: " + items[position].getId() + " URL: " + items[position].getAttrValue(Constants.ITEM_URL));
 			holder.text.setText("ID: " + items[position].getId());//(position + 1));
 
-			imageLoader.displayImage(items[position].getAttrValuesMap().get(Constants.ITEM_URL) /*imageUrls[position]*/, 
-					holder.image, options,
-					animateFirstListener);
+			imageLoader.displayImage(items[position].getAttrValue(Constants.ITEM_URL).toString() /*imageUrls[position]*/, 
+					holder.image, options, animateFirstListener);
 
 			return view;
 		}
