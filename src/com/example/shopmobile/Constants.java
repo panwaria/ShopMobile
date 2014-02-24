@@ -33,6 +33,9 @@ public final class Constants
 	
 	public static final String DEFAULT_CURRENCY = "usd";
 
+	// Checkout parameters
+	public static final String ITEM_TO_CHECKOUT = "item_to_checkout";
+	
 	public static class Extra
 	{
 		public static final String IMAGES = "com.example.shopmobile.IMAGES";

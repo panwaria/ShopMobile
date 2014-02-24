@@ -25,5 +25,13 @@ public class Item {
 	public Map<String, String> getAttrValuesMap() {
 		return attrValuesMap;
 	}
-	
+
+	public Object getAttrValue(String attrName)
+	{
+		Object value = null;
+		if(attrValuesMap.containsKey(attrName)) {
+			value = attrValuesMap.get(attrName);
+		}
+		return value;
+	}
 }
