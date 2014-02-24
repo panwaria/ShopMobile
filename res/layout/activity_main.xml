@@ -21,6 +21,23 @@
         <TextView
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
+	        android:textSize="36sp"
+	        android:text="Shop Stop for Students!"
+	        android:textStyle="bold"
+	        android:layout_marginBottom="@dimen/gen_item_margin_vertical" />
+        
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:gravity="center"
+        >
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
 	        android:textSize="@dimen/app_text_size"
 	        android:text="@string/select_category_str"
 	        android:layout_marginBottom="@dimen/gen_item_margin_vertical" />

@@ -128,6 +128,10 @@ public class MainActivity extends BaseActivity
 			attrValuesMap.put(Constants.ITEM_ID, id.toString());
 			attrValuesMap.put(Constants.ITEM_URL, imageUrl);
 			attrValuesMap.put(Constants.ITEM_TITLE, Constants.TITLES[count]);
+			
+			Double price = 10.0 + Math.random()*30;
+			Integer priceInt = price.intValue();
+			attrValuesMap.put(Constants.ITEM_PRICE, priceInt.toString());
 
 			itemArray[count] = new Item(count+100, attrValuesMap);
 			

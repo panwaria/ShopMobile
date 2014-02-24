@@ -33,7 +33,8 @@ public class PaymentFormActivity extends Activity
 		
 		// Retrieve the search parameters passed
 		Bundle extras = getIntent().getExtras();
-		itemToCheckout = (Item)extras.get(Constants.ITEM_TO_CHECKOUT);
+//		itemToCheckout = (Item)extras.get(Constants.ITEM_TO_CHECKOUT);
+		itemToCheckout = (Item) getIntent().getSerializableExtra(Constants.ITEM_TO_CHECKOUT);
 		
 		setUIControls();
 	}
@@ -57,8 +58,8 @@ public class PaymentFormActivity extends Activity
 		switch (v.getId())
 		{
 			case R.id.btn_checkout:
-				String name = (String)itemToCheckout.getAttrValue(Constants.ITEM_TITLE);
-				double price = (Double)itemToCheckout.getAttrValue(Constants.ITEM_PRICE);
+				String name = itemToCheckout.getAttrValue(Constants.ITEM_TITLE).toString();
+				int price = Integer.parseInt(itemToCheckout.getAttrValue(Constants.ITEM_PRICE).toString());
 				
 				long cardNo = Long.parseLong(cardNumber.getText().toString());
 				int cardExpYear = Integer.parseInt(cardExpirationYear.getText().toString());

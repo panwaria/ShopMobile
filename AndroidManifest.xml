@@ -15,7 +15,8 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.shopmobile.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,13 +26,16 @@
         
 	   <!-- ItemGrid Activity -->
        <activity
-	        android:name="com.example.shopmobile.ItemGridActivity" />
+	        android:name="com.example.shopmobile.ItemGridActivity"
+	        android:screenOrientation="portrait" />
                 
        <activity
-	        android:name="com.example.shopmobile.ItemListActivity" />
+	        android:name="com.example.shopmobile.ItemListActivity"
+	        android:screenOrientation="portrait" />
        
        <activity
-            android:name="com.example.shopmobile.PaymentFormActivity" />       
+            android:name="com.example.shopmobile.PaymentFormActivity"
+            android:screenOrientation="portrait" />       
        
     </application>
 

@@ -15,7 +15,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.example.shopmobile.model.Item;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
@@ -59,7 +58,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
-				Toast.makeText(ItemListActivity.this, "Need to send an intent to Stripe Activity", Toast.LENGTH_SHORT).show();
+				launchPaymentFormActivity(position);
+//				Toast.makeText(ItemListActivity.this, "Need to send an intent to Stripe Activity", Toast.LENGTH_SHORT).show();
 				// Send intent to Stripe Activity giving details of the item clicked.
 			}
 		});
@@ -79,6 +79,13 @@ public class ItemListActivity extends AbsListViewBaseActivity
 //		intent.putExtra(Extra.IMAGE_POSITION, position);
 //		startActivity(intent);
 //	}
+	
+	private void launchPaymentFormActivity(int position)
+	{
+		Intent intent = new Intent(this, PaymentFormActivity.class);
+		intent.putExtra(Constants.ITEM_TO_CHECKOUT, items[position]);
+		startActivity(intent);
+	}
 
 	class ItemAdapter extends BaseAdapter
 	{
@@ -87,7 +94,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 
 		private class ViewHolder
 		{
-			public TextView text;
+			public TextView title;
+			public TextView price;
 			public ImageView image;
 		}
 
@@ -120,7 +128,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 			{
 				view = getLayoutInflater().inflate(R.layout.item_list_image, parent, false);
 				holder = new ViewHolder();
-				holder.text = (TextView) view.findViewById(R.id.text);
+				holder.title = (TextView) view.findViewById(R.id.item_title);
+				holder.price = (TextView) view.findViewById(R.id.item_price);
 				holder.image = (ImageView) view.findViewById(R.id.image);
 				view.setTag(holder);
 			} 
@@ -133,7 +142,8 @@ public class ItemListActivity extends AbsListViewBaseActivity
 				return view;
 			
 			Log.i("Prakhar", "ID: " + items[position].getId() + " URL: " + items[position].getAttrValue(Constants.ITEM_URL));
-			holder.text.setText("ID: " + items[position].getId());//(position + 1));
+			holder.title.setText(items[position].getAttrValue(Constants.ITEM_TITLE).toString());
+			holder.price.setText("Price: $" + items[position].getAttrValue(Constants.ITEM_PRICE) + ".0");
 
 			imageLoader.displayImage(items[position].getAttrValue(Constants.ITEM_URL).toString() /*imageUrls[position]*/, 
 					holder.image, options, animateFirstListener);
