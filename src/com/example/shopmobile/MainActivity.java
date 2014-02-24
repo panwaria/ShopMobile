@@ -1,6 +1,6 @@
 package com.example.shopmobile;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,21 +9,45 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
-public class MainActivity extends Activity
+public class MainActivity extends BaseActivity
 {
 	private Spinner categorySpinner = null;
 	private EditText keywordText = null;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		setUIControls();
+		initImageLoader(getApplicationContext());
 	}
-	
+
+	public static void initImageLoader(Context context)
+	{
+		// This configuration tuning is custom. You can tune every option, you
+		// may tune some of them,
+		// or you can create default configuration by
+		// ImageLoaderConfiguration.createDefault(this);
+		// method.
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+				.threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
+				.discCacheFileNameGenerator(new Md5FileNameGenerator())
+				.tasksProcessingOrder(QueueProcessingType.LIFO).writeDebugLogs() // Remove
+																					// for
+																					// release
+																					// app
+				.build();
+		// Initialize ImageLoader with configuration.
+		ImageLoader.getInstance().init(config);
+	}
+
 	/**
 	 * Method to initialize UI of MainAcivity
 	 */
@@ -31,11 +55,11 @@ public class MainActivity extends Activity
 	{
 		// Setting up Drop-down
 		categorySpinner = (Spinner) findViewById(R.id.spinner_category);
-		ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this, R.array.category_array, 
-														android.R.layout.simple_spinner_item);
+		ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this,
+				R.array.category_array, android.R.layout.simple_spinner_item);
 		categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		categorySpinner.setAdapter(categoryAdapter);
-		
+
 		keywordText = (EditText) findViewById(R.id.keyword);
 	}
 
@@ -43,33 +67,52 @@ public class MainActivity extends Activity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.main_menu, menu);
 		return true;
 	}
 
 	/**
 	 * Callback method for clicks on the buttons in Main Screen.
-	 * @param v		View clicked
+	 * 
+	 * @param v
+	 *            View clicked
 	 */
 	public void onButtonClick(View v)
 	{
 		Log.i("Main Activity", "Inside button event handler ..");
-		switch(v.getId())
+		switch (v.getId())
 		{
- 
+
 		case R.id.btn_search:
-			String searchCategory = categorySpinner.getSelectedItem().toString();
-			String searchKeyword = keywordText.getText().toString();
-			
-			Intent showItemGrid = new Intent(MainActivity.this, ItemGridActivity.class);
-			showItemGrid.putExtra(Constants.ITEM_CATEGORY, searchCategory);
-			showItemGrid.putExtra(Constants.SEARCH_KEYWORD, searchKeyword);
-			startActivity(showItemGrid);
-			Log.i("Main Activity", "Search with category : " + searchCategory + ", keyword : " + searchKeyword);
- 
+
+			/**
+			 * // For ItemGridActivity String searchCategory =
+			 * categorySpinner.getSelectedItem().toString(); String
+			 * searchKeyword = keywordText.getText().toString();
+			 * 
+			 * Intent showItemGrid = new Intent(MainActivity.this,
+			 * ItemGridActivity.class);
+			 * showItemGrid.putExtra(Constants.ITEM_CATEGORY, searchCategory);
+			 * showItemGrid.putExtra(Constants.SEARCH_KEYWORD, searchKeyword);
+			 * startActivity(showItemGrid); Log.i("Main Activity",
+			 * "Search with category : " + searchCategory + ", keyword : " +
+			 * searchKeyword);
+			 **/
+
+			Intent intent = new Intent(this, ItemListActivity.class);
+			intent.putExtra(Constants.Extra.IMAGES, Constants.IMAGES);
+			startActivity(intent);
+
 			break;
- 
+
 		default:
 		}
+	}
+
+	@Override
+	public void onBackPressed()
+	{
+		imageLoader.stop();
+		super.onBackPressed();
 	}
 }
