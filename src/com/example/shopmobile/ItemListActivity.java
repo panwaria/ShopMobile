@@ -67,7 +67,7 @@ public class ItemListActivity extends AbsListViewBaseActivity
 		});
 		
 		// Show informational toast.
-		Toast t = Toast.makeText(this, "Click on any item to buy.", Toast.LENGTH_LONG);
+		Toast t = Toast.makeText(this, "CLICK ON ANY ITEM TO MAKE A PURCHASE.", Toast.LENGTH_LONG);
 		t.setGravity(Gravity.CENTER, 0, 0);
 		t.show();
 	}

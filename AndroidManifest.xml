@@ -7,7 +7,10 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="18" />
-
+    
+    <!-- Internet Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -36,10 +39,10 @@
        <activity
             android:name="com.example.shopmobile.PaymentFormActivity"
             android:screenOrientation="portrait" />       
+            
+       <activity android:name="com.example.shopmobile.stripe.PaymentActivity"
+                  android:screenOrientation="portrait" />
        
     </application>
 
-    <!-- Internet Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    
 </manifest>
